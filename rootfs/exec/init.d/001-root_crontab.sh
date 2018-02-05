@@ -3,8 +3,15 @@ _curent=`crontab -l 2>/dev/null`
 
 if [ -z "${_curent}" ];then
 cat <<-EOF | crontab -u root -
-# do daily/weekly/monthly maintenance
-# min   hour    day     month   weekday command
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin
+#####################################################################
+# ----------------------------------------- minutes
+# |     ----------------------------------- hour
+# |     |       --------------------------- day of month
+# |     |       |       ------------------- month
+# |     |       |       |       ----------- day of week
+# |     |       |       |       |       --- command
+# |     |       |       |       |       |
 */15    *       *       *       *       run-parts /etc/periodic/15min
 0       *       *       *       *       run-parts /etc/periodic/hourly
 0       0       *       *       *       run-parts /etc/periodic/daily
