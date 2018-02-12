@@ -1,6 +1,8 @@
 FROM       alpine:3.7
 
-LABEL      maintainer="sloth@devils.su"
+LABEL      maintainer="SlothDS" \
+           maintainer.mail="sloth@devils.su" \
+           maintainer.git="https://github.com/slothds"
 
 RUN        apk update && apk upgrade --no-cache && \
            apk add --no-cache bash shadow tzdata supervisor && \
